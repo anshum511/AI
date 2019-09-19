@@ -5,6 +5,14 @@ import time
 import random
 import winsound
 import pip
+import numpy as np
+from numpy import random_intel
+
+#import tensorflow as tf
+#from tensorflow.keras import backend as K
+#K.set_session(
+#tf.Session(config=tf.ConfigProto(intra_op_parallelism_threads=32, inter_op_parallelism_threads=2)))
+
 
 
 def countdown(n):   #setting time
@@ -150,6 +158,12 @@ while b>0:
                         engine.say(kiki)
                         engine.runAndWait();   
                     #set reminder
+
+                    elif ((a[j].lower()=='tell') or (a[j].lower()=='any')) and ((a[j+1].lower()=='any') or (a[j+1].lower()=='random') and (a[j+2].lower()=='numbers')):
+                        ri=np.random_intel.RandomState(10000)
+                        print(ri)
+                        engine.say(ri)
+                        engine.runAndWait();
                     
         except sr.UnknownValueError:
             a3=random.choice(donno)
